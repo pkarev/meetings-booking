@@ -1,0 +1,64 @@
+@mixin container-mobile {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@mixin container-desktop {
+  width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin hover-desktop {
+  @media (hover: hover) and (pointer: fine) and (min-width: 1080px) {
+    &:hover {
+      @content;
+    }
+  }
+
+  /*ie10-11 fallback*/
+  @media all and (min-width: 1080px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1079px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin button-reset {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding:0 !important;
+  border:0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
