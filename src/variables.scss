@@ -1,9 +1,17 @@
 $mine-shaft                       :     #262626;
 $dusty-gray                       :     #999999;
+$concrete                         :     #F2F2F2;
 $alabaster                        :     #FAFAFA;
 $medium-purple                    :     #9B51E0;
 
-$color-primary                    :     $medium-purple;
+$color-black                      :     $mine-shaft;
 $color-gray                       :     $dusty-gray;
+$color-primary                    :     $medium-purple;
 
-$background-color                 :     $alabaster;
+$background-color-gray            :     $concrete;
+$background-color-gray-light      :     $alabaster;
+
+$border-radius                    :     8px;
+$border-radius-s                  :     4px;
+
+$border-color                     :     $concrete;

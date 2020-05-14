@@ -1,0 +1,135 @@
+@import '../../mixins';
+@import '../../variables';
+
+.week-calendar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.week-calendar__day {
+    width: 158px;
+    margin: 0;
+    margin-left: 20px;
+    padding: 8px 16px;
+    background: $background-color-gray-light;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+
+    &:first-child {
+        margin-left: 188px;
+    }
+
+    &.is-today {
+        background: $background-color-gray;
+    }
+}
+
+.week-calendar__day-number {
+    color: $color-black;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+
+    @include desktop {
+        display: block;
+    }
+}
+
+.week-calendar__day-name {
+    color: $color-gray;
+    font-size: 14px;
+    line-height: 20px;
+
+    @include desktop {
+        display: block;
+    }
+}
+
+.week-calendar__room {
+    width: 188px;
+    padding: 8px;
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid $border-color;
+
+    &.is-first-room {
+        border-top: none;
+    }
+}
+
+.week-calendar__room-name {
+    color: $color-black;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.week-calendar__room-capacity {
+    color: $color-gray;
+    font-size: 14px;
+    line-height: 20px;
+
+    @include desktop {
+        margin-top: 8px;
+    }
+}
+
+.week-calendar__cell {
+    width: 178px;
+    padding-left: 20px;
+    border-top: 1px solid $border-color;
+
+    &.is-first-room {
+        border-top: none;
+    }
+
+    &.is-first-day {
+        width: 158px;
+        padding-left: 0;
+    }
+}
+
+.week-calendar__cell-inner {
+    padding: 16px 8px;
+    background: $background-color-gray-light;
+
+    &.is-first-room {
+        padding-top: 4px;
+    }
+
+    &.is-today {
+        background: $background-color-gray;
+    }
+
+    &.is-last-room {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+}
+
+.week-calendar__cell-day {
+    @include desktop {
+        display: none;
+    }
+}
+
+.week-calendar__cell-slots-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    @include desktop {
+        columns: 2;
+        column-gap: 2px;
+    }
+}
+
+.week-calendar__cell-slots-item {
+    margin-top: 2px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}

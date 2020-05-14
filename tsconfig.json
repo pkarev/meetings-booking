@@ -6,7 +6,9 @@
         "module": "es6",
         "moduleResolution": "node",
         "target": "es5",
-        "allowJs": true
+        "allowJs": true,
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false
     },
     "include": [
         "./src/**/*"
