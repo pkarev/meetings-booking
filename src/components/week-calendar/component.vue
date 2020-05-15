@@ -19,6 +19,10 @@
         </div>
         <template v-for="(day, dayIndex) in week">
             <div class="week-calendar__cell" :class="[firstRoomClass(roomIndex), firstDayClass(dayIndex)]">
+                <div class="week-calendar__cell-room">
+                    <span class="week-calendar__room-name">{{ room.name }}</span>
+                    <span class="week-calendar__room-capacity">до {{ room.capacity }} персон</span>
+                </div>
                 <div class="week-calendar__cell-inner" :class="[firstRoomClass(roomIndex), lastRoomClass(roomIndex, config.rooms), todayClass(day)]">
                     <div class="week-calendar__cell-day">
                         <span class="week-calendar__cell-day-number">{{ dayNumber(day) }}</span>

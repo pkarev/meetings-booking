@@ -43,6 +43,7 @@ export default class TimeSlot extends Vue
    border-radius: $border-radius-s;
    padding: 2px 8px;
    display: inline-flex;
+   justify-content: center;
    align-items: center;
    font-size: 14px;
    line-height: 20px;
