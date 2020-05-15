@@ -1,4 +1,5 @@
 <style src="./component.scss" scoped></style>
+<script src='./component.ts' lang="ts"></script>
 
 <template>
 <div class="week-calendar">
@@ -30,67 +31,17 @@
                     </div>
                     <ul class="week-calendar__cell-slots-list">
                         <li class="week-calendar__cell-slots-item" v-for="timeSlot in config.timeSlots">
-                            <TimeSlot class="week-calendar__cell-slot" :time-slot="timeSlot"/>
+                            <TimeSlot class="week-calendar__cell-slot"
+                                :time-slot="timeSlot"
+                                :is-booked="isBooked(day, room, timeSlot)"
+                                :is-disabled="isDisabled(day)"
+                                @click="onBookingClick(day, room, timeSlot)"
+                            />
                         </li>
                     </ul>
                 </div>
             </div>
         </template>
     </template>
-    <div class="week-calentar"></div>
 </div>
 </template>
-
-<script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import {Config} from '../../config';
-import {getDayNameByNumber, isToday} from '../../utils';
-import TimeSlot from '../time-slot/component.vue';
-
-@Component({
-    components: {TimeSlot}
-})
-export default class WeekCalendar extends Vue
-{
-    @Prop() week: Date[];
-    @Prop() config: Config;
-
-    dayNumber(date: Date): number
-    {
-        return date.getDate();
-    }
-
-    dayName(date: Date): string
-    {
-        return getDayNameByNumber(date.getDay());
-    }
-
-    firstRoomClass(index: number): Dictionary<boolean>
-    {
-        return {
-            'is-first-room': index === 0
-        }
-    }
-
-    lastRoomClass(index: number, arr: any[]): Dictionary<boolean>
-    {
-        return {
-            'is-last-room': index === arr.length - 1,
-        }
-    }
-
-    firstDayClass(index: number): Dictionary<boolean>
-    {
-        return {
-            'is-first-day': index === 0
-        }
-    }
-
-    todayClass(date: Date): Dictionary<boolean>
-    {
-        return {
-            'is-today': isToday(date),
-        }
-    }
-}
-</script>

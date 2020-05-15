@@ -8,6 +8,8 @@ const dayNames = [
 
 const getDayNameByNumber = (dayNumber: number): string => dayNames[dayNumber];
 
+const getIsoShortKey = (date: Date): string => date.toISOString().substring(0, 10);
+
 const isToday = (date: Date) => {
     const today = new Date()
     return date.getDate() === today.getDate() &&
@@ -19,5 +21,6 @@ export {
     monthNames,
     dayNames,
     getDayNameByNumber,
+    getIsoShortKey,
     isToday,
 };

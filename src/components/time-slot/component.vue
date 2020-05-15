@@ -1,8 +1,8 @@
 <template>
 <button class="time-slot"
+   @click="$emit('click')"
    :class="timeSlotClass"
    type="button"
-   @click="handleClick"
    :disabled="isDisabled"
 >
    {{ timeSlot }}
@@ -22,13 +22,9 @@ export default class TimeSlot extends Vue
    get timeSlotClass(): Dictionary<boolean>
    {
       return {
-         'is-booked': this.isBooked
+         'is-booked': this.isBooked,
+         'is-disabled': this.isDisabled,
       }
-   }
-
-   handleClick(): void
-   {
-      this.$emit('onClick', this.timeSlot);
    }
 }
 </script>
@@ -75,6 +71,7 @@ export default class TimeSlot extends Vue
    }
 
    &.is-disabled {
+      cursor: not-allowed;
       opacity: .5;
    }
 

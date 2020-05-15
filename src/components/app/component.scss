@@ -1,0 +1,28 @@
+@import '../../mixins';
+
+.app {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @include tablet {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  @include desktop {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+.app__week-calendar {
+  margin-top: 10px;
+
+  @include tablet {
+    margin-top: 20px;
+  }
+
+  @include desktop {
+    margin-top: 20px;
+  }
+}

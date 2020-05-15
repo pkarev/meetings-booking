@@ -2,13 +2,13 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
-        "strict": true,
         "module": "es6",
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
         "experimentalDecorators": true,
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "strict": false
     },
     "include": [
         "./src/**/*"

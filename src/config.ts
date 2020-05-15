@@ -32,13 +32,13 @@ const config: Config = {
 };
 
 interface Config {
-    rooms: Room[];
+    rooms: MeetingRoom[];
     timeSlots: string[];
 }
 
-type Room = {
+type MeetingRoom = {
     name: string,
     capacity: string
 };
 
-export {config, Config}
+export {config, Config, MeetingRoom}
