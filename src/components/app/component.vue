@@ -12,7 +12,7 @@
                 :config="config"
                 :week="week"
                 :bookings="bookings"
-                @bookingClick="handleBookingClick"
+                @bookingClick="updateBookings"
             />
         </div>
     </div>
