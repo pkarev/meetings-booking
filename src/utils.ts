@@ -43,11 +43,31 @@ const getCurrentWorkWeek = (date: Date): Date[] => {
     return week;
 };
 
+const getPrevWorkWeek = (week: Date[]): Date[] => {
+    return week.map((day: Date) => {
+        const prevWeekDay = new Date(day);
+        prevWeekDay.setDate(prevWeekDay.getDate() - 7);
+
+        return prevWeekDay;
+    });
+}
+
+const getNextWorkWeek = (week: Date[]): Date[] => {
+    return week.map((day: Date) => {
+        const prevWeekDay = new Date(day);
+        prevWeekDay.setDate(prevWeekDay.getDate() + 7);
+
+        return prevWeekDay;
+    });
+}
+
 export {
     monthNames,
     dayNames,
     getDayNameByNumber,
     getIsoShortKey,
     getCurrentWorkWeek,
+    getPrevWorkWeek,
+    getNextWorkWeek,
     isToday,
 };

@@ -7,7 +7,12 @@
             <h1 class="app__title">
                 Бронирование переговорок
             </h1>
-            <DateToggler class="app__date-toggler" :date="togglerDate"/>
+            <DateToggler
+                class="app__date-toggler"
+                :date="togglerDate"
+                @prevClick="onPrevWeekChange"
+                @nextClick="onNextWeekChange"
+            />
             <WeekCalendar class="app__week-calendar"
                 :config="config"
                 :week="week"

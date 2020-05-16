@@ -1,6 +1,6 @@
 import {Vue, Component} from 'vue-property-decorator';
 import {Config, config, MeetingRoom} from '../../config';
-import {getCurrentWorkWeek, getIsoShortKey, monthNames} from '../../utils';
+import {getCurrentWorkWeek, getIsoShortKey, getNextWorkWeek, getPrevWorkWeek, monthNames} from '../../utils';
 import DateToggler from '../date-toggler/component.vue';
 import WeekCalendar from '../week-calendar/component.vue';
 
@@ -9,9 +9,8 @@ import WeekCalendar from '../week-calendar/component.vue';
 })
 export default class App extends Vue
 {
-    week: Date[] = getCurrentWorkWeek(new Date());
-
     config: Config = config;
+    week: Date[] = getCurrentWorkWeek(new Date());
     bookings: object = this.getBookings(this.week);
 
     getBookings(week: Date[]): object
@@ -49,6 +48,18 @@ export default class App extends Vue
         localStorage.setItem(dateKey, JSON.stringify(this.bookings[dateKey]));
     }
 
+    onPrevWeekChange(): void
+    {
+        this.week = getPrevWorkWeek(this.week);
+        this.bookings = this.getBookings(this.week);
+    }
+
+    onNextWeekChange(): void
+    {
+        this.week = getNextWorkWeek(this.week);
+        this.bookings = this.getBookings(this.week);
+    }
+
     get togglerDate(): string
     {
         const monthBegin: number = this.week[0].getMonth();
@@ -57,7 +68,7 @@ export default class App extends Vue
         let date: string = monthNames[monthBegin];
 
         if (monthEnd !== monthBegin) {
-            date += `- ${monthNames[monthEnd]}`;
+            date += ` - ${monthNames[monthEnd]}`;
         }
 
         date += ` - ${String(this.week[this.week.length - 1].getFullYear())}`;
