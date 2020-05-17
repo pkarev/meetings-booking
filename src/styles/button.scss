@@ -1,0 +1,23 @@
+@import '../mixins';
+@import '../variables';
+
+.button {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 12px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.button_theme_main {
+  color: white;
+  border-radius: $border-radius-s;
+  background: $color-primary;
+}
+
+.button_theme_gray {
+  border-radius: $border-radius-s;
+  background: $background-color-gray;
+}

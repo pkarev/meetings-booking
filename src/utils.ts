@@ -4,11 +4,19 @@ const monthNames = [
     `Январь`, `Февраль`, `Март`, `Апрель`, `Май`, `Июнь`, `Июль`, `Август`, `Сентябрь`, `Октябрь`, `Ноябрь`, `Декабрь`
 ];
 
+const genitiveMonthNames = [
+    `Января`, `Февраля`, `Март`, `Апреля`, `Мая`, `Июня`, `Июля`, `Августа`, `Сентября`, `Октября`, `Ноября`, `Декабря`
+];
+
 const dayNames = [
     `Воскресенье`, `Понедельник`, `Вторник`, `Среда`, `Четверг`, `Пятница`, `Суббота`
 ]
 
 const getDayNameByNumber = (dayNumber: number): string => dayNames[dayNumber];
+
+const getMonthNameByNumber = (monthNumber: number): string => monthNames[monthNumber];
+
+const getGenitiveMonthNameByNumber = (monthNumber: number): string => genitiveMonthNames[monthNumber];
 
 const getIsoShortKey = (date: Date): string => date.toISOString().substring(0, 10);
 
@@ -64,6 +72,8 @@ const getNextWorkWeek = (week: Date[]): Date[] => {
 export {
     monthNames,
     dayNames,
+    getMonthNameByNumber,
+    getGenitiveMonthNameByNumber,
     getDayNameByNumber,
     getIsoShortKey,
     getCurrentWorkWeek,

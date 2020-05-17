@@ -17,8 +17,16 @@
                 :config="config"
                 :week="week"
                 :bookings="bookings"
-                @bookingClick="updateBookings"
+                @bookingClick="requireUpdate"
             />
         </div>
+        <Confirm v-model="isConfirmVisible" @confirm="confirmUpdate">
+            <span class="app__confirm-date">
+                {{ confirmDate }}
+            </span>
+            <span class="app__confirm-action">
+                {{ confirmAction }}
+            </span>
+        </Confirm>
     </div>
 </template>
