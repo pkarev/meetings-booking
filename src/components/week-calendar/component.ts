@@ -61,7 +61,7 @@ export default class WeekCalendar extends Vue
 
     isDisabled(date: Date): boolean
     {
-        return date < new Date();
+        return getIsoShortKey(date) < getIsoShortKey(new Date());
     }
 
     onBookingClick(date: Date, room: MeetingRoom, timeSlot: string): void

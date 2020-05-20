@@ -6,7 +6,6 @@ import {
     getNextWorkWeek,
     getPrevWorkWeek,
     monthNames,
-    getMonthNameByNumber,
     getGenitiveMonthNameByNumber
 } from '../../utils';
 import DateToggler from '../date-toggler/component.vue';
@@ -28,18 +27,15 @@ export default class App extends Vue
 
     config: Config = config;
     week: Date[] = getCurrentWorkWeek(new Date());
-    bookings: object = this.getBookings(this.week);
+    bookings: object = {};
 
-    getBookings(week: Date[]): object
+    mounted(): void
     {
-        const bookings = {};
-        week.forEach((day: Date): void => {
-            const dateKey = getIsoShortKey(day);
-            const dateBookings = JSON.parse(localStorage.getItem(dateKey));
-            bookings[dateKey] = dateBookings;
-        });
+        if (!localStorage.getItem('bookings')) {
+            localStorage.setItem('bookings', JSON.stringify(this.bookings));
+        }
 
-        return bookings;
+        this.bookings = JSON.parse(localStorage.getItem('bookings'));
     }
 
     requireUpdate(date: Date, room: MeetingRoom, timeSlot: string): void
@@ -77,19 +73,17 @@ export default class App extends Vue
             this.bookings[dateKey][room.name][timeSlot] = !this.bookings[dateKey][room.name][timeSlot];
         }
 
-        localStorage.setItem(dateKey, JSON.stringify(this.bookings[dateKey]));
+        localStorage.setItem('bookings', JSON.stringify(this.bookings));
     }
 
     onPrevWeekChange(): void
     {
         this.week = getPrevWorkWeek(this.week);
-        this.bookings = this.getBookings(this.week);
     }
 
     onNextWeekChange(): void
     {
         this.week = getNextWorkWeek(this.week);
-        this.bookings = this.getBookings(this.week);
     }
 
     get togglerDate(): string
